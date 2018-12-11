@@ -1,0 +1,22 @@
+<h1>Simulacro de examen <small>Área: {{ area }}</small></h1>
+
+<div *ngIf="!iniciar && preguntas" class="text-center">
+    <h4>Bienvenido al simulacro del examen por área</h4>
+    <p>Este examen consta de {{ preguntas.length }} preguntas. Lee con atención todas las preguntas y contesta con la opción correcta. ¡Éxito!</p>
+    <button mat-raised-button (click)="iniciarExamen()">Comenzar&nbsp;&nbsp;<i class="fas fa-chevron-right"></i></button>
+</div>
+
+<div class=" row " *ngIf="iniciar ">
+    <div class="col-8 ">
+        <app-pregunta></app-pregunta>
+        <button class="w-50" mat-button><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Anterior</button>
+        <button class="w-50" mat-button>Siguiente&nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
+    </div>
+    <div class="col-4 ">
+        <mat-list class="text-center">
+            <mat-list-item *ngFor="let pregunta of preguntas; let i = index">
+                <h4 mat-line><i class="fa-circle" [ngClass]="{'far': pregunta.respuesta == undefined, 'fas': pregunta.respuesta != undefined}"></i>&nbsp;&nbsp;&nbsp;Pregunta {{ i + 1 }}</h4>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

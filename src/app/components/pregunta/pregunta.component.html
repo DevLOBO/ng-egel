@@ -1,0 +1,7 @@
+<div *ngIf="pregunta">
+    <p>{{ numero + 1 }}. {{ pregunta.pregunta }} </p>
+
+    <mat-radio-group [(ngModel)]="respuesta">
+        <mat-radio-button *ngFor="let opcion of pregunta.opciones;let i = index" [value]="i">{{ opcion.titulo }}</mat-radio-button>
+    </mat-radio-group>
+</div>

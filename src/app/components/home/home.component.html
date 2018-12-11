@@ -1,0 +1,29 @@
+<div class="mt-5">
+    <button color="accent" mat-raised-button><i class="fas fa-book"></i> Examen por Área</button>
+    <button color="warn" mat-raised-button><i class="fas fa-graduation-cap"></i> Simulación de EGEL</button>
+    <button class="bg-info" color="primary" mat-stroked-button><i class="fas fa-cog"></i> Administración</button>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 my-5 text-center">
+        <ng-container matColumnDef="area">
+            <th class="w-50 text-center" mat-header-cell mat-sort-header *matHeaderCellDef> Área </th>
+            <td class="w-50" mat-cell *matCellDef="let dato"> {{ dato.area }} </td>
+            <td class="w-50" mat-footer-cell *matFooterCellDef> Total </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reactivos">
+            <th class="w-25 text-center" mat-header-cell mat-sort-header *matHeaderCellDef> Reactivos </th>
+            <td class="w-25" mat-cell *matCellDef="let dato"> {{ dato.reactivos }} </td>
+            <td class="w-25" mat-footer-cell *matFooterCellDef> {{ total }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="porcentaje">
+            <th class="w-25 text-center" mat-header-cell mat-sort-header *matHeaderCellDef> Porcentaje </th>
+            <td class="w-25" mat-cell *matCellDef="let dato"> {{ dato.reactivos / total | percent:'2.2' }} </td>
+            <td class="w-25" mat-footer-cell *matFooterCellDef> 100% </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </table>
+</div>
